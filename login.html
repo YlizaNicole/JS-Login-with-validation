@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #3498db;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            text-align: center;
+        }
+        .container {
+            background-color: #fff;
+            color: #3498db;
+            width: 300px;
+            margin: 0 auto;
+            padding: 3%;
+            border-radius: 10px;
+        }
+        form {
+            text-align: left;
+        }
+        input[type="number"], input[type="password"] {
+            width: 93%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #3498db;
+            background-color: #fff;
+            color: #3498db;
+            border-radius: 5px;
+        }
+        input[type="number"]::before {
+            position: absolute;
+            padding: 15px;
+            color: #3498db;
+            border-radius: 5px;
+        }
+        input[type="password"]::before {
+            position: absolute;
+            padding: 15px;
+            color: #3498db;
+            border-radius: 5px;
+            
+        }
+        input[type="submit"], input[type="reset"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            position: relative;
+            cursor: pointer;
+        }
+        input[type="submit"] {
+            background-color: #3498db;
+            color: white;
+        }
+        input[type="reset"] {
+            background-color: #3498db;
+            color: white;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        input[type="reset"]:hover {
+            background-color: #e55433;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login Page</h1>
+        <form id="loginForm" onsubmit="return validateForm()">
+            <input type="number" id="userID" name="userID" placeholder="User ID (numeric)" >
+            <br>
+            <input type="password" id="password" name="password" placeholder="Password (4-15 characters)" >
+            <br>
+            <input type="submit" value="Login">
+            <input type="reset" value="Reset">
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            var userID = document.getElementById("userID").value;
+            var password = document.getElementById("password").value;
+
+            if (userID === "") {
+                window.alert("User ID is required.");
+                return false;
+            }
+
+            if (isNaN(userID)) {
+                window.alert("User ID must be a number.");
+                return false;
+            }
+
+            if (password === "") {
+                window.alert("Password is required.");
+                return false;
+            }
+
+            if (password.length < 4 || password.length > 15) {
+                window.alert("Password must be between 4 and 15 characters.");
+                return false;
+            }
+
+            if (userID === "number" && password === "password") {
+                var confirmed = window.confirm("Login successful. Do you want to continue?");
+                if (confirmed) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                window.alert("Invalid User ID or password.");
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
+
